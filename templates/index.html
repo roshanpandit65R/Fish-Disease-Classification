@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fish Disease Detection</title>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes swimRight {
+            0% { left: -100px; transform: scaleX(1); }
+            100% { left: calc(100% + 100px); transform: scaleX(1); }
+        }
+        @keyframes swimLeft {
+            0% { left: calc(100% + 100px); transform: scaleX(-1); }
+            100% { left: -100px; transform: scaleX(-1); }
+        }
+        @keyframes swimUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes bubbleFloat {
+            0% { bottom: -20px; opacity: 0; }
+            10% { opacity: 0.5; }
+            100% { bottom: 100%; opacity: 0; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fish {
+            position: absolute;
+            width: 80px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .aquarium-decoration {
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #1a2980, #26d0ce); min-height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+
+    <!-- Aquarium Background Elements -->
+    <div class="aquarium-decoration" style="bottom: 20px; left: 10%; width: 100px; height: 40px; background-color: #8B4513; border-radius: 10px;"></div>
+    <div class="aquarium-decoration" style="bottom: 10px; right: 15%; width: 150px; height: 30px; background-color: #A0522D; border-radius: 15px;"></div>
+    <div class="aquarium-decoration" style="bottom: 30px; left: 30%; width: 80px; height: 25px; background-color: #CD853F; border-radius: 8px;"></div>
+    
+    <!-- Fish Elements -->
+    <div class="fish" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 50%22%3E%3Cpath d=%22M95,25c0,10-15,20-35,20c-20,0-35-10-35-20s15-20,35-20C80,5,95,15,95,25z%22 fill=%22%23FF9E3D%22/%3E%3Cpath d=%22M60,25c0,5-5,10-10,10s-10-5-10-10s5-10,10-10S60,20,60,25z%22 fill=%22%23000%22/%3E%3Cpath d=%22M95,25l5-5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3Cpath d=%22M95,25l5,5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3C/svg%3E'); 
+    top: 20%; animation: swimRight 15s linear infinite, swimUpDown 4s ease-in-out infinite;"></div>
+
+<div class="fish" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 50%22%3E%3Cpath d=%22M95,25c0,10-15,20-35,20c-20,0-35-10-35-20s15-20,35-20C80,5,95,15,95,25z%22 fill=%22%23FF5252%22/%3E%3Cpath d=%22M60,25c0,5-5,10-10,10s-10-5-10-10s5-10,10-10S60,20,60,25z%22 fill=%22%23000%22/%3E%3Cpath d=%22M95,25l5-5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3Cpath d=%22M95,25l5,5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3C/svg%3E'); 
+    top: 60%; animation: swimLeft 18s linear infinite, swimUpDown 3s ease-in-out infinite;"></div>
+
+<div class="fish" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 50%22%3E%3Cpath d=%22M95,25c0,10-15,20-35,20c-20,0-35-10-35-20s15-20,35-20C80,5,95,15,95,25z%22 fill=%22%234CAF50%22/%3E%3Cpath d=%22M60,25c0,5-5,10-10,10s-10-5-10-10s5-10,10-10S60,20,60,25z%22 fill=%22%23000%22/%3E%3Cpath d=%22M95,25l5-5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3Cpath d=%22M95,25l5,5%22 stroke=%22%23000%22 stroke-width=%222%22/%3E%3C/svg%3E'); 
+    top: 40%; animation: swimRight 20s linear infinite, swimUpDown 5s ease-in-out infinite;"></div>
+
+    
+    <!-- Bubbles -->
+    <div class="bubble" style="left: 15%; width: 10px; height: 10px; animation: bubbleFloat 8s linear infinite;"></div>
+    <div class="bubble" style="left: 25%; width: 15px; height: 15px; animation: bubbleFloat 10s linear infinite 2s;"></div>
+    <div class="bubble" style="left: 75%; width: 8px; height: 8px; animation: bubbleFloat 7s linear infinite 1s;"></div>
+    <div class="bubble" style="left: 85%; width: 12px; height: 12px; animation: bubbleFloat 9s linear infinite 3s;"></div>
+    <div class="bubble" style="left: 50%; width: 5px; height: 5px; animation: bubbleFloat 6s linear infinite 4s;"></div>
+
+    <!-- Main Content Container (same as before) -->
+    <div style="background-color: rgba(255, 255, 255, 0.9); border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); padding: 40px; width: 90%; max-width: 600px; text-align: center; animation: fadeIn 1s ease-out;">
+        <h1 style="color: #2c3e50; margin-bottom: 30px; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🐠 Fish Health Analyzer</h1>
+        <p style="color: #7f8c8d; margin-bottom: 30px; font-size: 1.1em;">Upload an image of your fish to detect potential diseases and get recommendations</p>
+        
+        <form action="/" method="post" enctype="multipart/form-data" style="margin-top: 30px;">
+            <div style="position: relative; margin-bottom: 30px;">
+                <label for="file-upload" style="display: block; padding: 20px; border: 3px dashed #3498db; border-radius: 15px; cursor: pointer; transition: all 0.3s; background-color: rgba(52, 152, 219, 0.1);">
+                    <i style="font-size: 50px; color: #3498db; display: block; margin-bottom: 15px;">📁</i>
+                    <span style="font-weight: bold; color: #3498db;">Choose an image or drag it here</span>
+                    <input id="file-upload" type="file" name="file" required style="position: absolute; width: 100%; height: 100%; opacity: 0; top: 0; left: 0; cursor: pointer;">
+                </label>
+            </div>
+            
+            <button type="submit" style="background: linear-gradient(to right, #3498db, #2ecc71); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4); animation: pulse 2s infinite;">
+                Analyze Fish Health
+                <span style="margin-left: 10px;">🔍</span>
+            </button>
+            
+            <div style="margin-top: 30px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; display: none;" id="loading">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 30px; height: 30px; border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 15px;"></div>
+                    <span style="color: #2c3e50;">Analyzing your fish image...</span>
+                </div>
+            </div>
+        </form>
+        
+        <div style="margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+            <p>Supported formats: JPG, PNG, WEBP</p>
+            <p>Max file size: 5MB</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation trigger when file is selected
+        document.getElementById('file-upload').addEventListener('change', function() {
+            const label = this.parentElement;
+            label.style.borderColor = '#2ecc71';
+            label.style.transform = 'scale(1.02)';
+            label.style.boxShadow = '0 5px 15px rgba(46, 204, 113, 0.3)';
+            
+            setTimeout(() => {
+                label.style.transform = 'scale(1)';
+            }, 300);
+            
+            // Show loading animation when form is submitted
+            document.querySelector('form').addEventListener('submit', function() {
+                document.getElementById('loading').style.display = 'block';
+            });
+        });
+
+        // Create additional fish dynamically
+        function createFish() {
+            const colors = ['#FF5252', '#4CAF50', '#FF9E3D', '#9C27B0', '#2196F3'];
+            const aquarium = document.body;
+            
+            for (let i = 0; i < 3; i++) {
+                const fish = document.createElement('div');
+                fish.className = 'fish';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const size = Math.random() * 30 + 50;
+                const duration = Math.random() * 10 + 15;
+                const delay = Math.random() * 5;
+                const top = Math.random() * 70 + 10;
+                
+                fish.style.backgroundImage = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><path d="M95,25c0,10-15,20-35,20c-20,0-35-10-35-20s15-20,35-20C80,5,95,15,95,25z" fill="${color}"/><path d="M60,25c0,5-5,10-10,10s-10-5-10-10s5-10,10-10S60,20,60,25z" fill="%23000"/><path d="M95,25l5-5" stroke="%23000" stroke-width="2"/><path d="M95,25l5,5" stroke="%23000" stroke-width="2"/></svg>')`;
+                fish.style.width = `${size}px`;
+                fish.style.height = `${size/2}px`;
+                fish.style.top = `${top}%`;
+                fish.style.animation = `swim${Math.random() > 0.5 ? 'Right' : 'Left'} ${duration}s linear infinite ${delay}s, swimUpDown ${Math.random() * 3 + 2}s ease-in-out infinite`;
+                
+                aquarium.appendChild(fish);
+            }
+        }
+
+        // Create additional bubbles dynamically
+        function createBubbles() {
+            const aquarium = document.body;
+            
+            for (let i = 0; i < 10; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 5 + 5;
+                const delay = Math.random() * 5;
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${left}%`;
+                bubble.style.animation = `bubbleFloat ${duration}s linear infinite ${delay}s`;
+                
+                aquarium.appendChild(bubble);
+            }
+        }
+
+        // Initialize aquarium elements
+        createFish();
+        createBubbles();
+    </script>
+</body>
+</html>
