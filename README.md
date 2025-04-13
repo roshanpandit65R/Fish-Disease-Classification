@@ -1,4 +1,4 @@
-# 🐟 Fish Disease Classification using AI (Flask + TensorFlow)
+# 🐟 Fish Disease Classification using AI 
 
 This project uses deep learning and image processing to identify common fish diseases from freshwater aquaculture in South Asia. The user can upload an image of a fish, and the system will detect and classify the disease using a trained CNN model.
 
@@ -66,13 +66,12 @@ pip install tensorflow flask opencv-python numpy pillow matplotlib scikit-learn
 
 1. **Make sure your trained model is saved at:**  
    `models/fish_disease_model.h5`
-   ```bash
-train_model.py
-```
+   
 
 2. **Start the Flask app:**
 
 ```bash
+train_model.py
 python app.py
 ```
 
