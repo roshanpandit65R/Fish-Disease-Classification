@@ -66,6 +66,9 @@ pip install tensorflow flask opencv-python numpy pillow matplotlib scikit-learn
 
 1. **Make sure your trained model is saved at:**  
    `models/fish_disease_model.h5`
+   ```bash
+train_model.py
+```
 
 2. **Start the Flask app:**
 
